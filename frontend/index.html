@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>JOKER</title>
+</head>
+<body>
+
+    <!-- Calculadora JOKER -->
+    <h1>Calculadora JOKER</h1>
+
+    <!-- Entradas numericas -->
+    <input type="number" id="a" min="-99999" max="99999" step="1" placeholder="Primer numero">
+    <input type="number" id="b" min="-99999" max="99999" step="1" placeholder="Segundo numero">
+
+    <!-- Operaciones permitidas -->
+    <button onclick="op('+')">Sumar</button>
+    <button onclick="op('-')">Restar</button>
+    <button onclick="op('*')">Multiplicar</button>
+    <button onclick="op('^')">Potencia</button>
+
+    <!-- Resultado -->
+    <h2 id="r">Resultado:</h2>
+
+    <script>
+        // Funcion para realizar las operaciones
+        function op(t) {
+
+            // Variables de entrada y resultado
+            let a = document.getElementById("a").value;
+            let b = document.getElementById("b").value;
+            let r;
+
+            // Comprobacion de entradas
+            if (a === "" || b === "" ||
+                !Number.isInteger(Number(a)) ||
+                !Number.isInteger(Number(b)) ||
+                Number(a) < -99999 || Number(a) > 99999 ||
+                Number(b) < -99999 || Number(b) > 99999) {
+
+                document.getElementById("r").innerText = "Introduce dos enteros validos.";
+                return;
+            }
+
+            a = Number(a);
+            b = Number(b);
+
+            // Ejecucion de operaciones
+            if (t === '+') r = a + b;
+            if (t === '-') r = a - b;
+            if (t === '*') r = a * b;
+            if (t === '^') r = Math.pow(a, b);
+
+            // Mostrar resultado
+            document.getElementById("r").innerText = "Resultado: " + r;
+        }
+    </script>
+
+</body>
+</html>
