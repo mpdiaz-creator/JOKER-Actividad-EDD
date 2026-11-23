@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,24 +14,28 @@
     <input type="number" id="b" min="-99999" max="99999" step="1" placeholder="Segundo numero">
 
     <!-- Operaciones permitidas -->
-    <button onclick="op('+')">Sumar</button>
-    <button onclick="op('-')">Restar</button>
-    <button onclick="op('*')">Multiplicar</button>
-    <button onclick="op('^')">Potencia</button>
+    <button onclick="t='+'; op()">Sumar</button>
+    <button onclick="t='-'; op()">Restar</button>
+    <button onclick="t='*'; op()">Multiplicar</button>
+    <button onclick="t='^'; op()">Potencia</button>
 
     <!-- Resultado -->
     <h2 id="r">Resultado:</h2>
 
     <script>
-        // Funcion para realizar las operaciones
-        function op(t) {
+        // Variables globales
+        var a, b, r, t;
 
-            // Variables de entrada y resultado
-            let a = document.getElementById("a").value;
-            let b = document.getElementById("b").value;
-            let r;
+        /**
+         * Realiza la operacion seleccionada.
+         */
+        function op() {
 
-            // Comprobacion de entradas
+            // Lectura de los numeros
+            a = document.getElementById("a").value;
+            b = document.getElementById("b").value;
+
+            // Validacion de las entradas
             if (a === "" || b === "" ||
                 !Number.isInteger(Number(a)) ||
                 !Number.isInteger(Number(b)) ||
@@ -46,13 +49,13 @@
             a = Number(a);
             b = Number(b);
 
-            // Ejecucion de operaciones
+            // Ejecucion de la operacion
             if (t === '+') r = a + b;
             if (t === '-') r = a - b;
             if (t === '*') r = a * b;
             if (t === '^') r = Math.pow(a, b);
 
-            // Mostrar resultado
+            // Mostrar el resultado
             document.getElementById("r").innerText = "Resultado: " + r;
         }
     </script>
