@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>JOKER</title>
+</head>
+<body>
+
+    <h1>Calculadora JOKER</h1>
+
+    <input type="number" id="a" placeholder="Primer número">
+    <input type="number" id="b" placeholder="Segundo número">
+
+    <button onclick="op('+')">Sumar</button>
+    <button onclick="op('-')">Restar</button>
+    <button onclick="op('*')">Multiplicar</button>
+    <button onclick="op('^')">Potencia</button>
+
+    <h2 id="r">Resultado:</h2>
+
+    <script>
+        function op(t) {
+            let a = Number(document.getElementById("a").value);
+            let b = Number(document.getElementById("b").value);
+            let r;
+
+            if (a < -99999 || a > 99999 || b < -99999 || b > 99999 ||
+                !Number.isInteger(a) || !Number.isInteger(b) ||
+                document.getElementById("a").value === "" ||
+                document.getElementById("b").value === "") {
+                document.getElementById("r").innerText = "Introduce enteros válidos.";
+                return;
+            }
+
+            if (t === '+') r = a + b;
+            if (t === '-') r = a - b;
+            if (t === '*') r = a * b;
+            if (t === '^') r = Math.pow(a, b);
+
+            document.getElementById("r").innerText = "Resultado: " + r;
+        }
+    </script>
+
+</body>
+</html>
