@@ -11,12 +11,11 @@ public class Ca {
     static Scanner sc = new Scanner(System.in);
     static int a, b, v;
     static double r;
-    static String s;
 
     /**
      * Funcion de division.
-     * Se encuentra desactivada porque la division
-     * no esta permitida entre las operaciones solicitadas.
+     * Se encuentra desactivada porque no esta permitida
+     * entre las operaciones solicitadas.
      *
      * @return resultado de la division
      */
@@ -27,23 +26,23 @@ public class Ca {
     */
 
     /**
-     * Lee un numero entero comprendido entre -99999 y 99999.
+     * Lee un entero entre -99999 y 99999.
      *
-     * @return numero entero validado
+     * @return numero validado
      */
     static int le() {
         while (true) {
             System.out.print("Introduce un numero: ");
-            s = sc.nextLine();
 
-            try {
-                v = Integer.parseInt(s);
+            if (sc.hasNextInt()) {
+                v = sc.nextInt();
+                sc.nextLine();
 
                 if (v >= -99999 && v <= 99999) {
                     return v;
                 }
-            } catch (NumberFormatException e) {
-                // Entrada no valida
+            } else {
+                sc.nextLine();
             }
 
             System.out.println("Error: introduce un entero entre -99999 y 99999.");
